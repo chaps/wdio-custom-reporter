@@ -1,17 +1,21 @@
 var features = {};
 var currentFeature = [];
 
-export function getFeatures() { return features; };
+function getFeatures() { return features; };
 
 /**
  * @param {string} scenarioName it will add the scenario name
  * @param {string} status will add the status of the scenario
  */
-export function addScenarioStatus(scenarioName, status) {
+function addScenarioStatus(scenarioName, status) {
     currentFeature.push({ name: scenarioName.replace(/\\\//g, ''), status });
 };
 
-export function closeFeature(name) {
+function closeFeature(name) {
      Object.assign(features, { [name]: currentFeature });
     currentFeature = [];
 };
+
+exports.closeFeature = closeFeature;
+exports.addScenarioStatus = addScenarioStatus;
+exports.getFeatures = getFeatures;

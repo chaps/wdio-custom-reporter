@@ -1,8 +1,16 @@
-import WDIOReporter from '@wdio/reporter';
-import { Mailer } from './src/mailer.js';
-import { getFeatures, addScenarioStatus, closeFeature } from './src/dataHandler';
+//import WDIOReporter from '@wdio/reporter';
+//import { Mailer } from './src/mailer.js';
+//import { getFeatures, addScenarioStatus, closeFeature } from './src/dataHandler';
+const WDIOReporter = require('@wdio/reporter').default;
+const Mailer = require('./src/mailer.js').Mailer;
+const dataHanlder = require('./src/dataHandler');
+const getFeatures = dataHanlder.getFeatures; 
+const addScenarioStatus = dataHanlder.addScenarioStatus; 
+const closeFeature = dataHanlder.closeFeature;
 
-export default class ReportMailer extends WDIOReporter {
+
+
+class ReportMailer extends WDIOReporter {
     constructor(options) {
         /*
         * make reporter to write to the output stream by default
@@ -48,3 +56,5 @@ export default class ReportMailer extends WDIOReporter {
         }
     }
 };
+
+exports.ReportMailer = ReportMailer;

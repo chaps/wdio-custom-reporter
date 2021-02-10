@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const QuickChart = require('quickchart-js');
 const xoauth2 = require('xoauth2');
 
-export class Mailer {
+class Mailer {
     constructor(transporter) {
         this.transporter = nodemailer.createTransport(transporter);
 
@@ -20,8 +20,8 @@ export class Mailer {
 
         this.mailOptions = {
             from: 'wdio.mailer@gmail.com', // sender address
-            to: 'c-fmichel@jwplayer.com', // list of receivers
-            subject: 'You\'re reports', // Subject line
+            to: 'mockaccount@mockgmail.com', // list of receivers
+            subject: 'Your reports', // Subject line
             text: 'Hello, you should check your reports', // plain text body
             html: 'Here goes your features', // html body
         };
@@ -64,3 +64,5 @@ export class Mailer {
         return this.transporter.sendMail(this.mailOptions).catch(e => e);
     }
 }
+
+exports.Mailer = Mailer;
